@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+.inner {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+@media screen and (min-width: 1010px) {
+    .inner {
+        padding: 0;
+    }
+}
+/*
+    FONT-components
+*/
+.text-400 {
+    font-weight: 400;
+}
+.text-500 {
+    font-weight: 500;
+}
+.text-600 {
+    font-weight: 600;
+}
+.text-700 {
+    font-weight: 700;
+}
+/*
+    Header
+*/
+.header-user-avatar-placeholder {
+    background-image: url(../img/icon/pfp-icon.svg);
+}
+/*
+    Listings
+*/
+.listing {
+    max-width: 440px;
+    @apply flex flex-col px-3 relative z-10 w-full h-fit before:h-[70%] before:bg-dark200 before:rounded-lg before:absolute before:left-0 before:right-0 before:bottom-0 before:z-10;
+}
+.auction-listings {
+    @apply grid grid-cols-1 justify-around mdListing:grid-cols-2 lgListing:grid-cols-3 gap-3 mb-3;
+}
+.listing-img {
+    aspect-ratio: 6/4;
+    @apply w-full bg-dark300 z-20 relative rounded-lg;
+}
+.listing-img-img {
+    @apply w-full h-full object-cover object-center rounded-lg outline-white50op outline outline-2 hover:outline-secondary;
+}
+.listing-text-wrapper {
+    @apply flex flex-col items-center justify-center py-2;
+}
+.listing-title {
+    @apply relative z-20 text-600;
+}
+.listing-time {
+    @apply relative z-20 text-xs text-white50op;
+}
+.listing-current-bid {
+    @apply relative z-20 text-sm text-600 text-secondary;
+}

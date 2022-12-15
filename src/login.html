@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>bidHouse | Login</title>
+        <script src="./js/main.js" type="module" defer></script>
+        <script src="./js/login.js" type="module" defer></script>
+    </head>
+    <body class="text-white bg-dark100 font-mainFont">
+        <div class="grid items-center justify-center h-screen w-screen">
+            <div class="inner">
+                <h1 class="text-center text-3xl mb-10">
+                    Welcome to <span class="text-400 text-secondary">bid</span
+                    ><span class="text-700 text-secondary">House</span>
+                </h1>
+                <form id="loginForm" class="flex flex-col gap-y-2 w-full">
+                    <h2 class="text-2xl">Login</h2>
+                    <div class="flex flex-col gap-y-1">
+                        <label for="email"> Email</label>
+                        <input
+                            id="email"
+                            class="w-full py-2 px-2 bg-dark200 placeholder:text-white50op text-white border-none focus:outline-none"
+                            name="email"
+                            type="text"
+                            placeholder="email@noroff.no ..."
+                        />
+                        <span id="emailErrorNotValid" class="hidden text-sm text-red-500">
+                            Email is not valid must be a valid stud.noroff.no or noroff.no email
+                            address
+                        </span>
+                        <span id="emailError" class="hidden text-sm text-red-500">
+                            Email is required
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-y-1">
+                        <label for="password">Password</label>
+                        <input
+                            class="w-full py-2 px-2 bg-dark200 placeholder:text-white50op text-white border-none focus:outline-none"
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Password ..."
+                        />
+                        <span id="passwordError" class="hidden text-sm text-red-500">
+                            Password is not valid
+                        </span>
+                    </div>
+                    <button
+                        class="p-2 mt-4 text-white capitalize bg-dark200 rounded-md"
+                        type="submit"
+                    >
+                        Login
+                    </button>
+                </form>
+                <div class="flex flex-col items-center">
+                    <hr class="w-full my-4" />
+                    <a href="register.html" class="w-fit"
+                        >Or <span class="border-b-2 pb-[2px] text-600">Sign Up</span> today!</a
+                    >
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

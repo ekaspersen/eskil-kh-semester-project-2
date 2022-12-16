@@ -7,6 +7,7 @@
     max-width: 1000px;
     padding-left: 12px;
     padding-right: 12px;
+    position: relative;
 }
 @media screen and (min-width: 1010px) {
     .inner {
@@ -34,6 +35,20 @@
 .header-user-avatar-placeholder {
     background-image: url(../img/icon/pfp-icon.svg);
 }
+.navigation {
+    position: absolute;
+    transition: all 200ms ease-out;
+    top: 80px;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    right: 0;
+    @apply bg-opacity-80 w-44 flex flex-col bg-dark200;
+}
+.show-nav {
+    opacity: 1;
+    height: auto;
+}
 /*
     Listings
 */
@@ -46,6 +61,7 @@
 }
 .listing-img {
     aspect-ratio: 6/4;
+    max-height: 200px;
     @apply w-full bg-dark300 z-20 relative rounded-lg;
 }
 .listing-img-img {
@@ -55,7 +71,7 @@
     @apply flex flex-col items-center justify-center py-2;
 }
 .listing-title {
-    @apply relative z-20 text-600;
+    @apply relative z-20 text-600 text-ellipsis overflow-hidden max-w-full;
 }
 .listing-time {
     @apply relative z-20 text-xs text-white50op;

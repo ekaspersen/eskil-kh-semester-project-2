@@ -2,12 +2,14 @@ import { GET_LISTINGS_URL } from './settings/api';
 import { getUserName } from './utils/storage';
 import { getUserAvatar } from './utils/storage';
 import { getToken } from './utils/storage';
+import { clearStorage } from './utils/storage';
 
 const accessToken = getToken();
 const headerUserWrapper = document.querySelector('#headerUserWrapper');
 const headerUserName = document.querySelector('#headerUserName');
 const headerUserAvatarPlaceholder = document.querySelector('#headerUserAvatarPlaceholder');
 const nav = document.querySelector('#nav');
+const logOutUser = document.querySelector('#logOutUser');
 console.log(getUserAvatar());
 headerUserName.innerHTML = `<button id="toggle-dropdown" style="font-weight:600;">${getUserName()} <span style="font-size:14px;">▼</span></button>`;
 if (!getUserAvatar()) {
@@ -23,4 +25,8 @@ if (!accessToken) {
 }
 document.querySelector('#toggle-dropdown').onclick = function () {
     nav.classList.toggle('show-nav');
+};
+logOutUser.onclick = function () {
+    clearStorage();
+    window.location.replace('./');
 };

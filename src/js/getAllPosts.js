@@ -16,7 +16,7 @@ async function getListings() {
                     return b - a;
                 });
                 let currentBid = sortedArray[sortedArray.length - 1];
-                var currBid = currentBid.amount;
+                var currBid = 'Current bid: ' + currentBid.amount;
             } else {
                 var currBid = 'No bids';
             }
@@ -36,7 +36,13 @@ async function getListings() {
                 );
                 const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                return days + ' days ' + hours + 'h ' + minutes + 'min ';
+                if (days == 0) {
+                    return hours + 'h ' + minutes + 'm ' + 's ';
+                } else if (days == 0 && hours == 0) {
+                    return minutes + 'm ' + 's ';
+                } else {
+                    return days + ' days ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
+                }
             }
             setInterval(updateCountdown, 1000);
             listingsWrapper.innerHTML += `<a href="listing.html?listingId='${
@@ -59,7 +65,7 @@ async function getListings() {
                                 <p id="listingTimeOfSale" class="listing-time">${formattedTimestamp}</p>
                             </div>
                             <p id="listingsCurrentBid" class="listing-current-bid">
-                                Current bid: <span>${currBid}</span>
+                                ${currBid}
                             </p>
                         </div>
                     </a>`;

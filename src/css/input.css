@@ -52,6 +52,7 @@
 /*
     Listings
 */
+
 .listing {
     max-width: 440px;
     @apply flex flex-col px-3 relative z-10 w-full h-fit before:h-[70%] before:bg-dark200 before:rounded-lg before:absolute before:left-0 before:right-0 before:bottom-0 before:z-10;
@@ -78,6 +79,34 @@
 }
 .listing-current-bid {
     @apply relative z-20 text-sm text-600 text-secondary;
+}
+/*
+    Single Listings
+*/
+.single-listing {
+    @apply flex flex-col p-3 bg-dark200 mt-10 rounded-lg;
+}
+.single-listing-img {
+    aspect-ratio: 6/4;
+    max-height: 200px;
+    @apply w-full bg-dark300 z-20 relative rounded-lg;
+}
+.single-listing-img-img {
+    @apply w-full h-full object-cover object-center rounded-lg outline-white50op outline outline-2 hover:outline-secondary;
+}
+.single-listing-text-wrapper {
+    @apply gap-2 flex flex-col mt-2;
+}
+.single-listing-title {
+    @apply text-xl;
+}
+.single-listing-description {
+    font-weight: 400;
+    @apply text-xs;
+}
+.single-listing-seller-name {
+    font-weight: 600;
+    @apply text-xs;
 }
 /*
     pfp

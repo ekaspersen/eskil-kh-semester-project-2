@@ -1,5 +1,13 @@
 import { GET_LISTINGS_URL } from './settings/api';
-
+function isDateOlderThanToday(date) {
+    var today = new Date();
+    var inputDate = new Date(date);
+    if (inputDate < today) {
+        return true;
+    } else {
+        return false;
+    }
+}
 const listingsWrapper = document.querySelector('#auctionListings');
 
 async function getListings() {
@@ -7,9 +15,10 @@ async function getListings() {
         const response = await fetch(GET_LISTINGS_URL, { method: 'GET' });
         const data = await response.json();
 
-        for (let i = 0; i < 19; i++) {
+        for (let i = 0; i < 42; i++) {
             console.log(data[i]);
             const listing = data[i];
+
             const bidsArray = listing.bids;
             if (bidsArray.length > 0) {
                 const sortedArray = bidsArray.sort(function (a, b) {
@@ -30,16 +39,21 @@ async function getListings() {
             function updateCountdown() {
                 const now = new Date();
                 const timeRemaining = new Date(listing.endsAt) - now;
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor(
-                    (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                );
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                let days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
                 if (days == 0) {
                     return hours + 'h ' + minutes + 'm ' + 's ';
                 } else if (days == 0 && hours == 0) {
                     return minutes + 'm ' + 's ';
+                } else if (isDateOlderThanToday(listing.endsAt)) {
+                    formattedTimestamp = 'Expired';
+                    days = '0';
+                    hours = '0';
+                    minutes = '0';
+                    seconds = '0';
+                    currBid = 'Expired';
                 } else {
                     return days + ' days ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
                 }
@@ -47,7 +61,7 @@ async function getListings() {
             setInterval(updateCountdown, 1000);
             listingsWrapper.innerHTML += `<a href="listing.html?listingId='${
                 listing.id
-            }'" id="listing" class="listing">
+            }'"> <id="listing" class="listing">
                         <div class="listing-img">
                             <img
                                 id="listingImg${[i]}"
@@ -60,7 +74,7 @@ async function getListings() {
                             <h2 id="listingTitle" class="listing-title">${listing.title}</h2>
                             <div class="flex flex-col items-center">
                                 <p id="listingTimeToSale" class="listing-time">
-                                    ${updateCountdown()}
+                                    ${updateCountdown() || 'Item is'}
                                 </p>
                                 <p id="listingTimeOfSale" class="listing-time">${formattedTimestamp}</p>
                             </div>

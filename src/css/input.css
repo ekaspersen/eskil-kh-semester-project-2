@@ -87,9 +87,9 @@
     @apply flex flex-col p-3 bg-dark200 mt-10 rounded-lg;
 }
 .single-listing-img {
-    aspect-ratio: 6/4;
-    max-height: 200px;
-    @apply w-full bg-dark300 z-20 relative rounded-lg;
+    object-fit: contain;
+    max-height: 400px;
+    @apply w-full bg-dark300 z-20 relative rounded-lg object-center;
 }
 .single-listing-img-img {
     @apply w-full h-full object-cover object-center rounded-lg outline-white50op outline outline-2 hover:outline-secondary;
@@ -98,15 +98,22 @@
     @apply gap-2 flex flex-col mt-2;
 }
 .single-listing-title {
-    @apply text-xl;
+    @apply text-2xl;
 }
 .single-listing-description {
     font-weight: 400;
-    @apply text-xs;
 }
 .single-listing-seller-name {
     font-weight: 600;
-    @apply text-xs;
+}
+.place-bid {
+    @apply flex gap-2 mt-2;
+}
+.place-bid-input {
+    @apply w-24 h-12 text-black text-center rounded-lg;
+}
+.place-bid-button {
+    @apply border-4 border-secondary text-secondary font-semibold w-36 rounded-lg;
 }
 /*
     pfp
@@ -140,7 +147,7 @@
 }
 .bid-info-titles {
     padding: 8px 12px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     @apply bg-darkgrey;
 }
@@ -200,4 +207,22 @@
 .confirm-img button {
     padding: 12px;
     font-size: 20px;
+}
+.new-listing {
+    @apply p-5 flex flex-col gap-2 max-w-full;
+}
+.new-listing input,
+.new-listing textarea,
+.new-listing-submit {
+    padding: 12px 8px;
+    @apply text-white bg-darkgrey;
+}
+.new-listing-submit {
+    @apply mt-4;
+}
+.input-wrapper {
+    @apply flex flex-col;
+}
+.input-wrapper-tags {
+    @apply flex gap-2 flex-wrap;
 }

@@ -1,4 +1,4 @@
-import { GET_LISTINGS_URL } from './settings/api';
+import { GET_USER_URL } from './settings/api';
 import { getUserName } from './utils/storage';
 import { getUserAvatar } from './utils/storage';
 import { getToken } from './utils/storage';
@@ -10,6 +10,7 @@ const headerUserName = document.querySelector('#headerUserName');
 const headerUserAvatarPlaceholder = document.querySelector('#headerUserAvatarPlaceholder');
 const nav = document.querySelector('#nav');
 const logOutUser = document.querySelector('#logOutUser');
+const returnCurrency = document.querySelector('#returnCurrency');
 console.log(getUserAvatar());
 headerUserName.innerHTML = `<button id="toggle-dropdown" style="font-weight:600;">${getUserName()} <span style="font-size:14px;">▼</span></button>`;
 if (!getUserAvatar()) {
@@ -30,3 +31,23 @@ logOutUser.onclick = function () {
     clearStorage();
     window.location.replace('./');
 };
+async function fetchData() {
+    try {
+        const response = await fetch(GET_USER_URL, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${getToken()}`,
+            },
+        });
+        const data = await response.json();
+        console.log(data);
+        returnCurrency.innerHTML = `
+        <img class='h-5 mr-2 my-auto' src='./img/icon/bidBuck.svg' alt='$'>
+        ${data.credits}
+        `;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+fetchData();

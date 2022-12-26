@@ -156,6 +156,7 @@
 }
 .bid-info {
     padding: 8px;
+    gap: 8px;
     display: flex;
     flex-direction: column;
 }
@@ -225,4 +226,24 @@
 }
 .input-wrapper-tags {
     @apply flex gap-2 flex-wrap;
+}
+.modal-screen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    @apply bg-black80op text-3xl;
+}
+.modal-screen button {
+    @apply py-4 px-8 text-center text-xl bg-white50op;
+}
+.modal-mode-body {
+    max-height: 100vh;
+    height: 100%;
+    overflow: hidden;
 }

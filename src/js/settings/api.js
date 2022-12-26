@@ -10,6 +10,7 @@ const USER_SIGNUP_URL = `${API_BASE_URL}auth/register`;
 // LISTINGS
 let listingID = '';
 const POST_LISTINGS_URL = `${API_BASE_URL}listings`;
+const DELETE_LISTINGS_URL = `${API_BASE_URL}listings/`;
 const GET_LISTINGS_URL = `${API_BASE_URL}listings?sort=created&sortOrder=desc&_bids=true`;
 const GET_SINGLE_LISTING_URL = `${API_BASE_URL}listings/`;
 
@@ -23,4 +24,5 @@ export {
     GET_SINGLE_LISTING_URL,
     GET_USER_URL,
     POST_LISTINGS_URL,
+    DELETE_LISTINGS_URL,
 };

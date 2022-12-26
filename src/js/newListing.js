@@ -21,6 +21,14 @@ form.addEventListener('submit', (event) => {
         body: JSON.stringify(data),
     })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data);
+            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('close-modal').addEventListener('click', () => {
+                document.getElementById('modal').style.display = 'none';
+                document.getElementById('newListingBody').classList += '.modal-mode-body';
+                window.location.href = './pfp.html';
+            });
+        })
         .catch((error) => console.error(error));
 });

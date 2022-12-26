@@ -11,6 +11,7 @@ export default {
                 login: resolve(__dirname, 'src/login.html'),
                 register: resolve(__dirname, 'src/register.html'),
                 pfp: resolve(__dirname, 'src/pfp.html'),
+                newPost: resolve(__dirname, 'src/new-post.html'),
             },
         },
     },

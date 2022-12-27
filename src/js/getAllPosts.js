@@ -59,9 +59,8 @@ async function getListings() {
                 }
             }
             setInterval(updateCountdown, 1000);
-            listingsWrapper.innerHTML += `<a href="listing.html?listingId='${
-                listing.id
-            }'"> <id="listing" class="listing">
+            listingsWrapper.innerHTML += `<a href="listing.html?listingId=${listing.id}">
+                    <id="listing" class="listing">
                         <div class="listing-img">
                             <img
                                 id="listingImg${[i]}"

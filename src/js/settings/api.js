@@ -15,7 +15,7 @@ const GET_LISTINGS_URL = `${API_BASE_URL}listings?sort=created&sortOrder=desc&_b
 const GET_SINGLE_LISTING_URL = `${API_BASE_URL}listings/`;
 
 // PROFILES
-const GET_USER_URL = `${API_BASE_URL}profiles/${userName}?_listings=true`;
+const GET_USER_URL = `${API_BASE_URL}profiles/${userName}?_listings=true&_bids=true`;
 export {
     API_BASE_URL,
     USER_LOGIN_URL,

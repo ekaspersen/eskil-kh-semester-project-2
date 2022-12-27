@@ -1,16 +1,11 @@
-import { GET_SINGLE_LISTING_URL } from './settings/api';
-
-const listing = document.querySelector('#listings');
 const listingInfo = document.querySelector('#listingsInfo');
-const listingImg = document.querySelector('#listingsImg');
-const listingTitle = document.querySelector('#listingTitle');
-const listingDescription = document.querySelector('#listingDescription');
-const listingSellerName = document.querySelector('#listingSellerName');
-// Get the current URL
+const currBids = document.querySelector('#currBids');
+const currBidsSpan = document.querySelector('#currBidsSpan');
 let urlParams = new URLSearchParams(window.location.search);
 let paramId = urlParams.get('listingId');
-let listingId = paramId.substr(1, paramId.length - 2);
-console.log(listingId);
+
+const listingId = decodeURIComponent(paramId);
+
 async function getListings() {
     try {
         const response = await fetch(
@@ -20,8 +15,8 @@ async function getListings() {
             }
         );
         const data = await response.json();
-        console.log(data);
         const listing = data;
+        console.log(data);
         listingInfo.innerHTML = `
                 <div id="listingsInfo" class="single-listing-info">
                     <div id="listingsImgWrapper" class="single-listing-img-wrapper">
@@ -42,6 +37,24 @@ async function getListings() {
                         }</p>
                     </div>
                 </div>`;
+        for (let i2 = 0; i2 < listing.bids.length; i2++) {
+            console.log(listing.bids);
+        }
+        listing.bids.reverse();
+        listing.bids.forEach((bid) => {
+            if (listing.bids.length > 0) {
+                currBidsSpan.style.display = 'none';
+            }
+            currBids.innerHTML += `
+            <div  class="p-2 bg-dark300 relative">
+                   <p class="text-white50op">${bid.bidderName}</p>
+                   <p class="overflow-hidden whitespace-nowrap overflow-ellipsis max-w-[70%] text-600">${bid.amount}</p>
+             
+                <p></p>
+            </div>       
+        `;
+        });
+        /**/
     } catch (error) {
         console.log(error);
     }

@@ -11,7 +11,7 @@ const headerUserAvatarPlaceholder = document.querySelector('#headerUserAvatarPla
 const nav = document.querySelector('#nav');
 const logOutUser = document.querySelector('#logOutUser');
 const returnCurrency = document.querySelector('#returnCurrency');
-console.log(getUserAvatar());
+
 headerUserName.innerHTML = `<button id="toggle-dropdown" style="font-weight:600;">${getUserName()} <span style="font-size:14px;">▼</span></button>`;
 if (!getUserAvatar()) {
 } else {
@@ -40,7 +40,6 @@ async function fetchData() {
             },
         });
         const data = await response.json();
-        console.log(data);
         returnCurrency.innerHTML = `
         <img class='h-5 mr-2 my-auto' src='./img/icon/bidBuck.svg' alt='$'>
         ${data.credits}

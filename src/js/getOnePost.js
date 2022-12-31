@@ -17,13 +17,19 @@ async function getListings() {
         const data = await response.json();
         const listing = data;
         console.log(data);
+        let listingMedia;
+        if (listing.media.length > 0) {
+            listingMedia = listing.media;
+        } else {
+            listingMedia = './img/no-img.png';
+        }
         listingInfo.innerHTML = `
                 <div id="listingsInfo" class="single-listing-info">
                     <div id="listingsImgWrapper" class="single-listing-img-wrapper">
                         <img
                             id="listingImg"
                             class="single-listing-img"
-                            src="${listing.media}"
+                            src="${listingMedia}"
                             alt="picture of, same-as-h1"
                         />
                     </div>

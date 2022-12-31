@@ -18,6 +18,7 @@ async function getListings() {
         for (let i = 0; i < 42; i++) {
             console.log(data[i]);
             const listing = data[i];
+            //let listingMedia = listing.media;
 
             const bidsArray = listing.bids;
             if (bidsArray.length > 0) {
@@ -59,14 +60,21 @@ async function getListings() {
                 }
             }
             setInterval(updateCountdown, 1000);
+
+            let listingMedia;
+            if (listing.media.length > 0) {
+                listingMedia = listing.media;
+            } else {
+                listingMedia = './img/no-img.png';
+            }
             listingsWrapper.innerHTML += `<a href="listing.html?listingId=${listing.id}">
                     <id="listing" class="listing">
                         <div class="listing-img">
                             <img
                                 id="listingImg${[i]}"
                                 class="listing-img-img"
-                                src="${listing.media}"
-                                alt="listing-picture"
+                                src="${listingMedia}"
+                                alt="listing-picture-if-you-see-this-url-is-broken"
                             />
                         </div>
                         <div class="listing-text-wrapper">

@@ -16,10 +16,7 @@ async function getListings() {
         const data = await response.json();
 
         for (let i = 0; i < 42; i++) {
-            console.log(data[i]);
             const listing = data[i];
-            //let listingMedia = listing.media;
-
             const bidsArray = listing.bids;
             if (bidsArray.length > 0) {
                 const sortedArray = bidsArray.sort(function (a, b) {
@@ -74,7 +71,7 @@ async function getListings() {
                                 id="listingImg${[i]}"
                                 class="listing-img-img"
                                 src="${listingMedia}"
-                                alt="listing-picture-if-you-see-this-url-is-broken"
+                                alt="listing-picture-if-you-can-see-this-url-is-broken"
                             />
                         </div>
                         <div class="listing-text-wrapper">
@@ -91,11 +88,9 @@ async function getListings() {
                         </div>
                     </a>`;
             const listingImg = document.getElementById(`listingImg${[i]}`);
-            console.log(i + '' + listingImg.src);
 
             setTimeout(() => {
                 if (listingImg.src == false) {
-                    console.log(listingImg);
                 }
             }, 2000);
         }

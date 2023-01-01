@@ -1,3 +1,4 @@
+import { getToken } from './utils/storage';
 const listingInfo = document.querySelector('#listingsInfo');
 const currBids = document.querySelector('#currBids');
 const currBidsSpan = document.querySelector('#currBidsSpan');
@@ -30,7 +31,7 @@ async function getListings() {
                             id="listingImg"
                             class="single-listing-img"
                             src="${listingMedia}"
-                            alt="picture of, same-as-h1"
+                            alt="listing-picture-if-you-can-see-this-url-is-broken"
                         />
                     </div>
                     <div id="listingText" class="single-listing-text-wrapper">
@@ -65,4 +66,39 @@ async function getListings() {
         console.log(error);
     }
 }
+
+const form = document.getElementById('placeBidForm');
+
+async function placeBid(event) {
+    event.preventDefault();
+
+    const bidAmount = document.getElementById('bidAmount').value;
+    console.log(bidAmount);
+    try {
+        const response = await fetch(
+            `https://api.noroff.dev/api/v1/auction/listings/${listingId}/bids`,
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    amount: bidAmount,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getToken()}`,
+                },
+            }
+        );
+        console.log(response);
+        if (response.ok) {
+            window.location.reload();
+            return response.json();
+        }
+        throw new Error('There was an error placing the bid');
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+form.addEventListener('submit', placeBid);
+
 getListings();

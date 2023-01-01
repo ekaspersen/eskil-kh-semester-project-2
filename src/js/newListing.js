@@ -7,6 +7,7 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     data.tags = [data.tag1, data.tag2, data.tag3];
+    data.media = [data.media];
     delete data.tag1;
     delete data.tag2;
     delete data.tag3;

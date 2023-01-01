@@ -79,13 +79,13 @@ async function placeBid(event) {
             `https://api.noroff.dev/api/v1/auction/listings/${listingId}/bids`,
             {
                 method: 'POST',
-                body: JSON.stringify({
-                    amount: bidAmount,
-                }),
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${getToken()}`,
                 },
+                body: JSON.stringify({
+                    amount: bidAmount,
+                }),
             }
         );
         console.log(response);

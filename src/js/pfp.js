@@ -16,7 +16,7 @@ async function getAuctions() {
         });
         const data = await response.json();
         console.log(data);
-        const listing = data;
+        let currBid = '';
 
         if (data.listings.length > 0) {
             bidHistorySpan.classList = 'hidden';
@@ -35,7 +35,7 @@ async function getAuctions() {
                 }
                 function updateCountdown() {
                     const now = new Date();
-                    const timeRemaining = new Date(data.listings[i].endsAt) - now;
+                    let timeRemaining = new Date(data.listings[i].endsAt) - now;
                     let days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
                     let hours = Math.floor(
                         (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -55,6 +55,10 @@ async function getAuctions() {
                         currBid = 'Expired';
                     } else {
                         return days + ' days ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
+                    }
+                    if (timeRemaining < today) {
+                        timeRemaining = '0';
+                        currBid = 'Expired';
                     }
                 }
                 bidHistory.innerHTML += `

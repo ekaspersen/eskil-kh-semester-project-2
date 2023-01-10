@@ -6,7 +6,7 @@ let urlParams = new URLSearchParams(window.location.search);
 let paramId = urlParams.get('listingId');
 
 const listingId = decodeURIComponent(paramId);
-
+console.log(getToken());
 async function getListings() {
     try {
         const response = await fetch(

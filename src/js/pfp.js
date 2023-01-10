@@ -3,7 +3,6 @@ import { DELETE_LISTINGS_URL } from './settings/api';
 import { getToken } from './utils/storage';
 const bidHistory = document.querySelector('#bidHistory');
 const bidHistorySpan = document.querySelector('#bidHistorySpan');
-const bidBids = document.querySelector('#bidBids');
 const bidBidsSpan = document.querySelector('#bidBidsSpan');
 async function getAuctions() {
     try {
@@ -119,6 +118,7 @@ async function getAuctions() {
         console.log(error);
     }
 }
+getAuctions();
 async function getBids() {
     try {
         const response = await fetch(GET_USER_URL, {
@@ -229,5 +229,4 @@ async function getBids() {
         console.log(error);
     }
 }
-getAuctions();
 getBids();

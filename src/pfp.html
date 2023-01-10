@@ -119,11 +119,18 @@
             </div>
             <div id="modalHistory" class="modal-screen hidden">
                 <div id="editPostModal" class="hidden"></div>
-                <div id="deletePostModal" class="hidden">
-                    <p>Sure you want to delete this post?</p>
-                    <div class="flex">
-                        <button id="deletePost">Delete</button>
-                        <button id="close-modal">NO</button>
+                <div
+                    id="deletePostModal"
+                    class="hidden absolute top-0 left-0 right-0 bottom-0 bg-black80op justify-center align-center gap-10"
+                >
+                    <p class="text-4xl">Sure you want to delete this post?</p>
+                    <div class="flex justify-center gap-5">
+                        <button id="deletePost" class="py-4 px-8 text-center text-xl bg-white50op">
+                            Delete
+                        </button>
+                        <button id="close-modal" class="py-4 px-8 text-center text-xl bg-white50op">
+                            NO
+                        </button>
                     </div>
                 </div>
             </div>
